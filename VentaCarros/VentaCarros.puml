@@ -1,0 +1,83 @@
+@startuml VentaCarros
+class Reparacion {
+    - descripcion: String
+}
+
+class ReparacionMecanica extends Reparacion {
+
+}
+
+class ReparacionElectricas extends Reparacion {
+
+}
+
+class ReparacionCarroceria extends Reparacion {
+
+}
+
+class Carro {
+    - marca: String
+    - modelo: String 
+    - matricula: int 
+    - precioCompra: int 
+    - precioVenta: int  
+    - reparaciones: List<Reparacion>
+    == Metodos ==
+    + reparar(): void
+}
+
+class CarroTodoTerreno extends Carro {
+
+}
+
+class CarroRentACar extends Carro {
+
+}
+
+class CarroIndustrial extends Carro {
+
+}
+
+class ExposicionCarro {
+    -ubicacion: String
+}
+
+class Vendedor extends Persona {
+    - ventas: List<Venta>
+    == Metodos ==
+    + vender(carro: Carro): void 
+    + comprar(carro: Carro): void
+}
+
+class VendedorAsalariado extends Vendedor {
+    - salario: int 
+}
+
+class VendedorComision extends Vendedor {
+    - carrosVendidos: int
+}
+
+class Cliente extends Persona {
+
+}
+
+class Persona {
+    - nombre: String
+    - cedula: int 
+    - telefono: int
+    - correro: String
+    - direccion: String 
+}
+
+
+class Venta {
+    - carro: Carro
+    - cliente: Cliente
+    - fecha: LocalDate
+}
+
+
+Carro -* "0..*" Reparacion
+ExposicionCarro o- Carro
+Carro -right-* "0..*" Venta
+@enduml
