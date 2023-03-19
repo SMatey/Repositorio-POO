@@ -1,0 +1,49 @@
+@startuml Agenda
+class Agenda {
+    - listaContactos: ArrayList<Contacto>
+    - listaEventos: ArrayList<Evento>
+    == Metodos ==
+    + agregarContacto(contacto: Contacto): void
+    + editarContacto(contacto: Contacto): void
+    + eliminarContacto(contacto: Contacto): void
+    + agregarEvento(evento: Evento): void
+    + editarEvento(evento: Evento): void
+    + eliminarEvento(evento: Evento): void
+}
+
+class Contacto {
+    - nombre: String
+    - telefono: int
+}
+
+class Familiar extends Contacto {
+    - parenteso: String
+}
+
+class Trabajo extends Contacto {
+    - empresa: String
+    - puesto: String
+}
+
+class Amigo extends Contacto {
+    - direccion: String
+    - apodo: String
+}
+
+class Evento {
+    - nombre: String
+    - lugar: String
+    - fecha: String
+}
+
+class Concierto extends Evento {
+    - artista: String
+}
+
+class EventoSocial extends Evento {
+    - descripcion: String
+}
+
+Agenda o- "0..*" Contacto
+Agenda o-left- "0..*" Evento
+@enduml
